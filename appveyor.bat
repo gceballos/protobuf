@@ -1,5 +1,12 @@
 setlocal
 
+If ($PYTHON_ARCH -eq 32) {
+    $MINGW = $env:MINGW_32
+} Else {
+    $MINGW = $env:MINGW_64
+}
+$env:Path += ";$MINGW"
+
 pip install wheel
 cd %REPO_DIR%\python
 git checkout %BUILD_COMMIT%
